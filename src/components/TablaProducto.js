@@ -1,18 +1,19 @@
 import React, { Fragment, useState } from 'react'
 import axios from 'axios'
+import ModalProductoEdit from './ModalProductoEdit'
 import ModalProducto from './ModalProducto'
 
 
 const TablaProducto = ({ productos, lineas, impuestos }) => {
 
-    const [data, setData] = useState()
+    const [data, setData] = useState({})
 
     const handleClick = (e) => {
         setData(e)
     }
 
     const handleDelete = async (id) => {
-        const url = 'https://localhost:44301/api/producto'
+        const url = 'https://localhost:44301/producto'
         const response = await axios.delete(url, { params: { id: id } })
         console.log(response)
         window.location.reload()
@@ -49,7 +50,7 @@ const TablaProducto = ({ productos, lineas, impuestos }) => {
                                         data-target='#productoModal' onClick={() => handleClick(producto)}><i className='fas fa-pen fa-lg'
                                             style={{ float: 'right' }} title='Editar Producto'></i></button>
                                     <button disabled className='btn-danger btn' onClick={() => handleDelete(producto.id)}><i className='fas fa-trash fa-lg'
-                                        style={{ float: 'right' }} title='Editar Producto'></i></button>
+                                        style={{ float: 'right' }} title='Eliminar Producto'></i></button>
                                 </td>
                             </tr>
                         ))

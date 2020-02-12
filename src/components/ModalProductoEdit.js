@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import React, { useReducer, useEffect } from 'react'
 import axios from 'axios'
 
 const reducer = (state, action) => {
@@ -15,7 +15,7 @@ const reducer = (state, action) => {
     }
 }
 
-var initialState = {
+const initialState = {
     codigo: '',
     precio_1: 0.0,
     precio_2: 0.0,
@@ -32,7 +32,7 @@ var initialState = {
     producto1: ''
 }
 
-const ModalProducto = ({ lineas, impuestos, data }) => {
+const ModalProductoEdit = ({ lineas, impuestos, data = initialState }) => {
 
     const [producto, dispatch] = useReducer(reducer, data)
 
@@ -58,12 +58,12 @@ const ModalProducto = ({ lineas, impuestos, data }) => {
     }
 
     return (
-        <div className='modal fade' id='productoModal' tabIndex='-1' role='dialog' aria-labelledby='exampleModalLabel'
+        <div className='modal fade' id='productoModalEdit' tabIndex='-1' role='dialog' aria-labelledby='exampleModalLabel'
             aria-hidden='true'>
             <div className='modal-dialog' role='document'>
                 <div className='modal-content'>
                     <div className='modal-header'>
-                        <h5 className='modal-title'>Agregar producto</h5>
+                        <h5 className='modal-title'>Agregar/editar producto</h5>
                         <button className='close' type='button' data-dismiss='modal' aria-label='Close'>
                             <span aria-hidden='true'>×</span>
                         </button>
@@ -150,7 +150,7 @@ const ModalProducto = ({ lineas, impuestos, data }) => {
                             </div>
                             <div className='modal-footer'>
                                 <button className='btn btn-danger' type='button' data-dismiss='modal'>Cancelar</button>
-                                <input className='btn btn-primary' type='submit' value='Agregar' />
+                                <input className='btn btn-primary' type='submit' value='Guardar' />
                             </div>
                         </form>
                     </div>
@@ -160,4 +160,4 @@ const ModalProducto = ({ lineas, impuestos, data }) => {
     )
 }
 
-export default ModalProducto
+export default ModalProductoEdit

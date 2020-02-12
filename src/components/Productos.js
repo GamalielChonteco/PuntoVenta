@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 import TablaProducto from './TablaProducto'
-
 class Productos extends Component {
 
     state = {
@@ -20,7 +19,7 @@ class Productos extends Component {
     }
 
     async obtenerLineas() {
-        const url = 'https://localhost:44301/api/linea'
+        const url = 'https://localhost:44301/linea'
 
         const lineas = await axios.get(url)
 
@@ -28,7 +27,7 @@ class Productos extends Component {
     }
 
     async obtenerProductos() {
-        const url = 'https://localhost:44301/api/producto'
+        const url = 'https://localhost:44301/producto'
 
         const productos = await axios.get(url)
 
@@ -36,7 +35,7 @@ class Productos extends Component {
     }
 
     async obtenerImpuestos() {
-        const url = 'https://localhost:44301/api/impuesto'
+        const url = 'https://localhost:44301/impuesto'
 
         const impuestos = await axios.get(url)
 
@@ -44,7 +43,7 @@ class Productos extends Component {
     }
 
     actualizar = (e) => {
-        this.setState({tipoProducto: e.target.value})
+        this.setState({ tipoProducto: e.target.value })
     }
 
     render() {
