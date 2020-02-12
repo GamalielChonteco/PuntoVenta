@@ -32,9 +32,9 @@ var initialState = {
     producto1: ''
 }
 
-const ModalProducto = ({ lineas, impuestos, data }) => {
+const ModalProducto = ({ lineas, impuestos }) => {
 
-    const [producto, dispatch] = useReducer(reducer, data)
+    const [producto, dispatch] = useReducer(reducer, initialState)
 
     const actualizar = e => {
         dispatch({

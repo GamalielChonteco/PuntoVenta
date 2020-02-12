@@ -56,7 +56,7 @@ const TablaProducto = ({ productos, lineas, impuestos }) => {
                     }
                 </tbody>
             </table>
-            <ModalProducto lineas={lineas} impuestos={impuestos} data={data} />
+            <ModalProducto lineas={lineas} impuestos={impuestos} />
         </Fragment>
     )
 }
