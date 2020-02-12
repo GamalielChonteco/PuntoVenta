@@ -1,6 +1,5 @@
 import React, { Fragment, useState } from 'react'
 import axios from 'axios'
-import ModalProductoEdit from './ModalProductoEdit'
 import ModalProducto from './ModalProducto'
 
 
