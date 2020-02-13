@@ -11,7 +11,7 @@ class ModalUsuarios extends Component {
   }
 
   render() {
-    const { usuarios } = this.state;
+    // const { usuarios } = this.state;
 
     return (
       <div

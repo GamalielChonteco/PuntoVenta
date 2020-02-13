@@ -1,14 +1,69 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useReducer } from 'react'
 import axios from 'axios'
 import ModalProducto from './ModalProducto'
 
+var initialState = {
+    codigo: '',
+    precio_1: 0.0,
+    precio_2: 0.0,
+    precio_3: 0.0,
+    cantidad_1: 1,
+    cantidad_2: 0.0,
+    cantidad_3: 0.0,
+    costo: 0.0,
+    activo: 1,
+    marca: '',
+    existencia: 1,
+    linea: 0,
+    impuesto: 0,
+    producto1: ''
+}
+
+const reducer = (state, action) => {
+    switch (action.type) {
+        case 'SET_PRODUCTO':
+            return {
+                ...state,
+                [action.action.atribute]: action.action.value
+            }
+
+        case 'LOAD_DATA':
+            return action.e
+
+        case 'CLEAN_PRODUCTO':
+            return action.initialState
+
+        default:
+            return state
+    }
+}
 
 const TablaProducto = ({ productos, lineas, impuestos }) => {
 
-    const [data, setData] = useState({})
+    const [data, setData] = useReducer(reducer, initialState)
 
     const handleClick = (e) => {
-        setData(e)
+        setData({
+            type: 'LOAD_DATA',
+            e
+        })
+    }
+
+    const actualizar = e => {
+        setData({
+            type: 'SET_PRODUCTO',
+            action: {
+                atribute: e.target.name,
+                value: e.target.value
+            }
+        })
+    }
+
+    const limpiar = () => {
+        setData({
+            type: 'CLEAN_PRODUCTO',
+            initialState
+        })
     }
 
     const handleDelete = async (id) => {
@@ -37,7 +92,7 @@ const TablaProducto = ({ productos, lineas, impuestos }) => {
                     {
                         productos.map((producto) => (
                             <tr key={producto.id}>
-                                <td>{producto.id}</td>
+                                <td>{producto.codigo}</td>
                                 <td>{producto.producto1}</td>
                                 <td>{producto.costo}</td>
                                 <td>{producto.existencia}</td>
@@ -56,7 +111,7 @@ const TablaProducto = ({ productos, lineas, impuestos }) => {
                     }
                 </tbody>
             </table>
-            <ModalProducto lineas={lineas} impuestos={impuestos} />
+            <ModalProducto lineas={lineas} impuestos={impuestos} producto={data} actualizarState={actualizar} limpiarState={limpiar} />
         </Fragment>
     )
 }

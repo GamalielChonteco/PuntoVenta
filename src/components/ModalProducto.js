@@ -1,54 +1,16 @@
-import React, { useReducer } from 'react'
+import React from 'react'
 import axios from 'axios'
 
-const reducer = (state, action) => {
-    console.log(action)
-    switch (action.type) {
-        case 'SET_PRODUCTO':
-            return {
-                ...state,
-                [action.action.atribute]: action.action.value
-            }
-        
-        default:
-            return state
-    }
-}
-
-var initialState = {
-    codigo: '',
-    precio_1: 0.0,
-    precio_2: 0.0,
-    precio_3: 0.0,
-    cantidad_1: 1,
-    cantidad_2: 0.0,
-    cantidad_3: 0.0,
-    costo: 0.0,
-    activo: 1,
-    marca: '',
-    existencia: 1,
-    linea: 0,
-    impuesto: 0,
-    producto1: ''
-}
-
-const ModalProducto = ({ lineas, impuestos }) => {
-
-    const [producto, dispatch] = useReducer(reducer, initialState)
+const ModalProducto = ({ lineas, impuestos, producto, actualizarState, limpiarState }) => {
 
     const actualizar = e => {
-        dispatch({
-            type: 'SET_PRODUCTO',
-            action: {
-                atribute: e.target.name,
-                value: e.target.value
-            }
-        })
+        actualizarState(e)
     }
 
-    const handleSubmit = async () => {
-        const url = 'https://localhost:44301/api/producto'
-        if (producto.id) {
+    const handleSubmit = async (e) => {
+        // e.preventDefault()
+        const url = 'https://localhost:44301/producto'
+        if (producto.hasOwnProperty('id')) {
             const response = await axios.put(url, producto, { params: { id: producto.id } })
             console.log(response)
         } else {
@@ -63,7 +25,7 @@ const ModalProducto = ({ lineas, impuestos }) => {
             <div className='modal-dialog' role='document'>
                 <div className='modal-content'>
                     <div className='modal-header'>
-                        <h5 className='modal-title'>Agregar producto</h5>
+                        <h5 className='modal-title'>{(producto.hasOwnProperty('id')) ? 'Editar producto' : 'Agregar producto'}</h5>
                         <button className='close' type='button' data-dismiss='modal' aria-label='Close'>
                             <span aria-hidden='true'>×</span>
                         </button>
@@ -149,8 +111,8 @@ const ModalProducto = ({ lineas, impuestos }) => {
                                 </div>
                             </div>
                             <div className='modal-footer'>
-                                <button className='btn btn-danger' type='button' data-dismiss='modal'>Cancelar</button>
-                                <input className='btn btn-primary' type='submit' value='Agregar' />
+                                <button className='btn btn-danger' type='button' data-dismiss='modal' onClick={limpiarState}>Cancelar</button>
+                                <input className='btn btn-primary' type='submit' value='Guardar' />
                             </div>
                         </form>
                     </div>

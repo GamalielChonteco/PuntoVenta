@@ -11,7 +11,7 @@ class ModalImpuesto extends Component {
   }
 
   render() {
-    const { impuestos } = this.state;
+    // const { impuestos } = this.state;
 
     return (
       <div
