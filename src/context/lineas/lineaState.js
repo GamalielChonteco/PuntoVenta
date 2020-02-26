@@ -58,8 +58,7 @@ const LineaState = props => {
 
     const eliminarLinea = async lineaId => {
         try {
-            const response = await clientAxios.delete(`/linea/${lineaId}`)
-            console.log(response)
+            await clientAxios.delete(`/linea/${lineaId}`)
             dispatch({
                 type: ELIMINAR_LINEA,
                 payload: lineaId
