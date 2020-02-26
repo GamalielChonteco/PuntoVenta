@@ -2,7 +2,6 @@ import React, { Fragment, useContext, useEffect } from 'react'
 
 import impuestoContext from '../../context/impuestos/impuestoContext'
 
-import ModalImpuesto from './ModalImpuesto'
 import ModalDialog from '../ModalDialog'
 
 const TablaImpuesto = () => {
@@ -48,7 +47,6 @@ const TablaImpuesto = () => {
 					))}
 				</tbody>
 			</table>
-			<ModalImpuesto />
 			<ModalDialog
                 idModal='modalEliminarImpuesto'
                 text='Al realizar está acción el impuesto se eliminara permanentemente. ¿Desea continuar?'

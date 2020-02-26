@@ -4,7 +4,6 @@ import productoContext from '../../context/productos/productoContext'
 import lineaContext from '../../context/lineas/lineaContext'
 import impuestoContext from '../../context/impuestos/impuestoContext'
 
-import ModalProducto from './ModalProducto'
 import ModalDialog from '../ModalDialog'
 
 const TablaProducto = () => {
@@ -101,7 +100,6 @@ const TablaProducto = () => {
                     }
                 </tbody>
             </table>
-            <ModalProducto />
             <ModalDialog
                 idModal='modalInactivo'
                 text='Al realizar está acción el producto cambiará de estado a inactivo. ¿Desea continuar?'

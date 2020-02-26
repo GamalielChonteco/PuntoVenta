@@ -2,7 +2,6 @@ import React, { Fragment, useContext, useEffect } from 'react'
 
 import lineaContext from '../../context/lineas/lineaContext'
 
-import ModalLinea from './ModalLinea'
 import ModalDialog from '../ModalDialog'
 
 const TablaLinea = () => {
@@ -50,7 +49,6 @@ const TablaLinea = () => {
 					))}
 				</tbody>
 			</table>
-			<ModalLinea />
 			<ModalDialog
                 idModal='modalEliminarLinea'
                 text='Al realizar está acción la linea se eliminara permanentemente. ¿Desea continuar?'

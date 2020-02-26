@@ -8,6 +8,8 @@ import TablaImpuesto from './TablaImpuesto'
 import TablaLinea from './TablaLinea'
 import Sidebar from '../layout/Sidebar'
 import Topbar from '../layout/Topbar'
+import ModalImpuesto from './ModalImpuesto'
+import ModalLinea from './ModalLinea'
 
 const Valores = () => {
 
@@ -73,6 +75,8 @@ const Valores = () => {
                     </div>
                 </div>
             </div>
+			<ModalLinea />
+			<ModalImpuesto />
         </Fragment>
     )
 }

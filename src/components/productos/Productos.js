@@ -8,6 +8,7 @@ import TablaProducto from './TablaProducto'
 import Sidebar from '../layout/Sidebar'
 import Topbar from '../layout/Topbar'
 import Footer from '../layout/Footer'
+import ModalProducto from './ModalProducto'
 
 const Productos = () => {
 
@@ -66,6 +67,7 @@ const Productos = () => {
                 </div>
                 <Footer />
             </div>
+            <ModalProducto />
         </Fragment>
     )
 }
