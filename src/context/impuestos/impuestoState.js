@@ -46,7 +46,7 @@ const ImpuestoState = props => {
 
     const actualizarImpuesto = async impuesto => {
         try {
-            const response = await axios.put(`/impuesto/${impuesto.id}`, impuesto)
+            const response = await clientAxios.put(`/impuesto/${impuesto.id}`, impuesto)
             dispatch({
                 type: ACTUALIZAR_IMPUESTO,
                 payload: JSON.parse(response.config.data)
@@ -59,7 +59,7 @@ const ImpuestoState = props => {
 
     const eliminarImpuesto = async impuestoId => {
         try {
-            const response = await axios.delete(`/impuesto/${impuestoId}`)
+            const response = await clientAxios.delete(`/impuesto/${impuestoId}`)
             dispatch({
                 type: ELIMINAR_IMPUESTO,
                 payload: impuestoId

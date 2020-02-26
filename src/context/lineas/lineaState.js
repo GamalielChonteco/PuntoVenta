@@ -1,5 +1,4 @@
 import React, { useReducer } from 'react'
-import axios from 'axios'
 import lineaContext from './lineaContext'
 import lineaReducer from './lineaReducer'
 
@@ -34,7 +33,7 @@ const LineaState = props => {
 
     const crearLinea = async linea => {
         try {
-            const response = await axios.post('/linea', linea)
+            const response = await clientAxios.post('/linea', linea)
             dispatch({
                 type: AGREGAR_LINEA,
                 payload: JSON.parse(response.config.data)
@@ -46,7 +45,7 @@ const LineaState = props => {
 
     const actualizarLinea = async linea => {
         try {
-            const response = await axios.put(`/linea/${linea.id}`, linea)
+            const response = await clientAxios.put(`/linea/${linea.id}`, linea)
             dispatch({
                 type: ACTUALIZAR_LINEA,
                 payload: JSON.parse(response.config.data)

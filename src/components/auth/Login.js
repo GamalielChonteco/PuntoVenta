@@ -4,9 +4,10 @@ import authContext from '../../context/autenticacion/authContext'
 const Login = props => {
 
     const AuthContext = useContext(authContext)
-    const { mensaje, autenticado, iniciarSesion } = AuthContext
+    const { mensaje, autenticado, iniciarSesion, usuarioAutenticado } = AuthContext
 
     useEffect(() => {
+        usuarioAutenticado()
         if (autenticado) {
             props.history.push('/productos')
         } 
@@ -40,7 +41,7 @@ const Login = props => {
                     <div className='card o-hidden border-0 shadow-lg my-5'>
                         <div className='card-body p-0'>
                             <div className='row'>
-                                <div className='col-lg-12'>
+                                <div className='col-xl-10 col-lg-12 col-md-9'>
                                     <div className='p-5'>
                                         <div className='text-center'>
                                             <h1 className='h4 text-gray-900 mb-4'>Bienvenido</h1>
