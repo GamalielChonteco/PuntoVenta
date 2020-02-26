@@ -19,6 +19,7 @@ const ModalLinea = () => {
         } else {
             guardarLinea(initialState)
         }
+        // eslint-disable-next-line
     }, [lineaseleccionada])
 
     const [lineaNueva, guardarLinea] = useState(initialState)

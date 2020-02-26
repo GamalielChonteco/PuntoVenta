@@ -21,6 +21,7 @@ const Productos = () => {
 
     useEffect(() => {
         usuarioAutenticado()
+        // eslint-disable-next-line
     }, [])
 
     // Cambiar el filtro del estado

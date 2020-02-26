@@ -6,8 +6,6 @@ import clientAxios from '../../config/axios'
 import tokenAuth from '../../config/tokenAuth'
 
 import {
-    REGISTRO_EXITOSO,
-    REGISTRO_ERROR,
     OBTENER_USUARIO,
     LOGIN_EXITOSO,
     LOGIN_ERROR,

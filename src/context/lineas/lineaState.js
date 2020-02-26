@@ -36,7 +36,7 @@ const LineaState = props => {
             const response = await clientAxios.post('/linea', linea)
             dispatch({
                 type: AGREGAR_LINEA,
-                payload: JSON.parse(response.config.data)
+                payload: response.data.linea
             })
         } catch (error) {
             console.log(error)

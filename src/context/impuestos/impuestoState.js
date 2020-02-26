@@ -1,5 +1,4 @@
 import React, { useReducer } from 'react'
-import axios from 'axios'
 import impuestoContext from './impuestoContext'
 import impuestoReducer from './impuestoReducer'
 
@@ -59,7 +58,7 @@ const ImpuestoState = props => {
 
     const eliminarImpuesto = async impuestoId => {
         try {
-            const response = await clientAxios.delete(`/impuesto/${impuestoId}`)
+            await clientAxios.delete(`/impuesto/${impuestoId}`)
             dispatch({
                 type: ELIMINAR_IMPUESTO,
                 payload: impuestoId

@@ -12,6 +12,7 @@ const TablaImpuesto = () => {
 
 	useEffect(() => {
 		obtenerImpuestos()
+		// eslint-disable-next-line
 	}, [])
 
 	if (impuestos.length === 0) return <div></div>

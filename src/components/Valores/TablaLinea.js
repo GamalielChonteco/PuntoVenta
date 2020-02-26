@@ -14,6 +14,7 @@ const TablaLinea = () => {
 	// Obtener lineas cuando carga el componente
 	useEffect(() => {
 		obtenerLineas()
+		// eslint-disable-next-line
 	}, [])
 
 	if (lineas.length === 0) return <div></div>

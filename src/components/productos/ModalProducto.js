@@ -43,6 +43,7 @@ const ModalProducto = () => {
         } else {
             guardarProducto(initialState)
         }
+        // eslint-disable-next-line
     }, [productoseleccionado])
 
     // State del formulario

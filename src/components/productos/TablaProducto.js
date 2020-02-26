@@ -26,6 +26,7 @@ const TablaProducto = () => {
         obtenerImpuestos()
         obtenerLineas()
         obtenerProductos()
+        // eslint-disable-next-line
     }, [])
 
     const acciones = producto => {

@@ -9,6 +9,7 @@ const Topbar = () => {
 
     useEffect(() => {
         usuarioAutenticado()
+        // eslint-disable-next-line
     }, [])
 
     // const { nombre } = usuario

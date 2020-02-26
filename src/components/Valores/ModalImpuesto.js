@@ -18,6 +18,7 @@ const ModalImpuesto = () => {
 		} else {
 			guardarImpuesto(initialState)
 		}
+		// eslint-disable-next-line
 	}, [impuestoseleccionado])
 
 	const [impuestoNuevo, guardarImpuesto] = useState(initialState)

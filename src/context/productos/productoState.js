@@ -53,6 +53,7 @@ const ProductoState = props => {
     const actualizarProducto = async producto => {
         try {
             const response = await clientAxios.put(`/producto/${producto.id}`, producto)
+            console.log(response)
             dispatch({
                 type: ACTUALIZAR_PRODUCTO,
                 payload: JSON.parse(response.config.data)
