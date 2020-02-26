@@ -1,7 +1,8 @@
-import React, { Fragment, useContext } from 'react'
+import React, { Fragment, useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 import productoContext from '../../context/productos/productoContext'
+import authContext from '../../context/autenticacion/authContext'
 
 import TablaProducto from './TablaProducto'
 import Sidebar from '../layout/Sidebar'
@@ -13,12 +14,21 @@ const Productos = () => {
     // Extraer el estado del producto
     const productosContext = useContext(productoContext)
     const { estadoproducto, filtrarProducto, limpiarProducto } = productosContext
+    
+    // Validamos el usuario autenticado
+    const AuthContext = useContext(authContext)
+    const { usuarioAutenticado } = AuthContext
+
+    useEffect(() => {
+        usuarioAutenticado()
+    }, [])
 
     // Cambiar el filtro del estado
     const filtrar = e => {
         const estado = parseInt(e.target.value)
         filtrarProducto(estado)
     }
+
 
     return (
         <Fragment>

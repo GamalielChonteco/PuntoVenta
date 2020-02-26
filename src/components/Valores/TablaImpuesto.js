@@ -29,7 +29,7 @@ const TablaImpuesto = () => {
 				<tbody>
 					{impuestos.map(impuesto => (
 						<tr key={impuesto.id}>
-							<td>{impuesto.impuesto}</td>
+							<td>{impuesto.nombre}</td>
 							<td>{impuesto.valor}</td>
 							<td>
 							<button className='btn-primary btn' to='#' data-toggle='modal'

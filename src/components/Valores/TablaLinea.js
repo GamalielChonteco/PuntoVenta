@@ -31,7 +31,7 @@ const TablaLinea = () => {
 				<tbody>
 					{lineas.map(linea => (
 						<tr key={linea.id}>
-							<td>{linea.linea}</td>
+							<td>{linea.nombre}</td>
 							<td>{linea.descripcion}</td>
 							<td>
 								<button className='btn-primary btn' to='#' data-toggle='modal'

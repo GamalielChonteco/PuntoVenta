@@ -1,13 +1,23 @@
-import React, { useState } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
+import authContext from '../../context/autenticacion/authContext'
 
-const Login = () => {
+const Login = props => {
+
+    const AuthContext = useContext(authContext)
+    const { mensaje, autenticado, iniciarSesion } = AuthContext
+
+    useEffect(() => {
+        if (autenticado) {
+            props.history.push('/productos')
+        } 
+    }, [mensaje, autenticado, props.history])
 
     const [usuario, setUsuario] = useState({
-        email: '',
+        username: '',
         password: ''
     })
 
-    const { email, password } = usuario
+    const { username, password } = usuario
 
     const actualizar = e => {
         setUsuario({
@@ -19,10 +29,8 @@ const Login = () => {
     const onSubmit = e => {
         e.preventDefault()
 
-        // Validar campos
-
         // onSubmit
-
+        iniciarSesion({ username, password })
     }
 
     return (
@@ -39,7 +47,7 @@ const Login = () => {
                                         </div>
                                         <form className='user' onSubmit={onSubmit}>
                                             <div className='form-group'>
-                                                <input onChange={actualizar} value={email} type='email' name='email' className='form-control form-control-user' id='exampleInputEmail' aria-describedby='emailHelp' placeholder='Usuario' />
+                                                <input onChange={actualizar} value={username} type='text' name='username' className='form-control form-control-user' id='exampleInputEmail' aria-describedby='emailHelp' placeholder='Usuario' />
                                             </div>
                                             <div className='form-group'>
                                                 <input onChange={actualizar} value={password} type='password' name='password' className='form-control form-control-user' id='exampleInputPassword' placeholder='Constraseña' />

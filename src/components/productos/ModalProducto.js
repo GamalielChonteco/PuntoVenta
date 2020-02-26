@@ -33,7 +33,7 @@ const ModalProducto = () => {
         precio_1: 0.0,
         precio_2: 0.0,
         precio_3: 0.0,
-        producto: ''
+        nombre: ''
     }
 
     // Detectar si hay un producto seleccionado
@@ -49,7 +49,7 @@ const ModalProducto = () => {
     const [productoNuevo, guardarProducto] = useState(initialState)
 
     // Extraer datos del state del formulario
-    const { cantidad_1, cantidad_2, cantidad_3, codigo, costo, existencia, impuesto, linea, marca, precio_1, precio_2, precio_3, producto } = productoNuevo
+    const { cantidad_1, cantidad_2, cantidad_3, codigo, costo, existencia, impuesto, linea, marca, precio_1, precio_2, precio_3, nombre } = productoNuevo
 
 
     const handleSubmit = async (e) => {
@@ -97,7 +97,7 @@ const ModalProducto = () => {
                                         <option value='0'>Seleccione una opción</option>
                                         {
                                             lineas.map((linea) => (
-                                                <option value={linea.id} key={linea.id}>{linea.linea}</option>
+                                                <option value={linea.id} key={linea.id}>{linea.nombre}</option>
                                             ))
                                         }
                                     </select>
@@ -106,7 +106,7 @@ const ModalProducto = () => {
                             <div className='form-group row'>
                                 <div className='col-sm-12 mb-12 mb-sm-0'>
                                     <label htmlFor='nombreProducto'>Producto</label>
-                                    <input onChange={actualizar} value={producto} type='text' name='producto' className='form-control' id='nombreProducto' />
+                                    <input onChange={actualizar} value={nombre} type='text' name='nombre' className='form-control' id='nombreProducto' />
                                 </div>
                             </div>
                             <div className='form-group row'>
@@ -130,7 +130,7 @@ const ModalProducto = () => {
                                         <option value='0'>Seleccione una opción</option>
                                         {
                                             impuestos.map((impuesto) => (
-                                                <option value={impuesto.id} key={impuesto.id}>{impuesto.impuesto}</option>
+                                                <option value={impuesto.id} key={impuesto.id}>{impuesto.nombre}</option>
                                             ))
                                         }
                                     </select>

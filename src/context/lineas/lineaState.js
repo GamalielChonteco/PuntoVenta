@@ -3,6 +3,8 @@ import axios from 'axios'
 import lineaContext from './lineaContext'
 import lineaReducer from './lineaReducer'
 
+import clientAxios from '../../config/axios'
+
 import {
     OBTENER_LINEAS,
     AGREGAR_LINEA,
@@ -22,20 +24,17 @@ const LineaState = props => {
     const [state, dispatch] = useReducer(lineaReducer, initialState)
 
     const obtenerLineas = async () => {
-        const url = 'http://localhost:5000/linea'
-
-        const response = await axios.get(url)
+        const response = await clientAxios.get('/linea')
 
         dispatch({
             type: OBTENER_LINEAS,
-            payload: response.data
+            payload: response.data.lineas
         })
     }
 
     const crearLinea = async linea => {
         try {
-            const url = 'http://localhost:5000/linea/'
-            const response = await axios.post(url, linea)
+            const response = await axios.post('/linea', linea)
             dispatch({
                 type: AGREGAR_LINEA,
                 payload: JSON.parse(response.config.data)
@@ -47,8 +46,7 @@ const LineaState = props => {
 
     const actualizarLinea = async linea => {
         try {
-            const url = 'http://localhost:5000/linea/'
-            const response = await axios.put(url + linea.id, linea)
+            const response = await axios.put(`/linea/${linea.id}`, linea)
             dispatch({
                 type: ACTUALIZAR_LINEA,
                 payload: JSON.parse(response.config.data)
@@ -61,8 +59,7 @@ const LineaState = props => {
 
     const eliminarLinea = async lineaId => {
         try {
-            const url = `http://localhost:5000/linea/${lineaId}`
-            const response = await axios.delete(url)
+            const response = await clientAxios.delete(`/linea/${lineaId}`)
             console.log(response)
             dispatch({
                 type: ELIMINAR_LINEA,

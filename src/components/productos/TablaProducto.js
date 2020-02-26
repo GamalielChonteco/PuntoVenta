@@ -29,7 +29,7 @@ const TablaProducto = () => {
     }, [])
 
     const acciones = producto => {
-        if (estadoproducto === 1) {
+        if (producto.activo === 1) {
             return (
                 <td>
                     <button className='btn-primary btn' to='#' data-toggle='modal'
@@ -60,11 +60,11 @@ const TablaProducto = () => {
     const tipoProducto = (producto) => (
         <tr key={producto.id}>
             <td>{producto.codigo}</td>
-            <td>{producto.producto}</td>
+            <td>{producto.nombre}</td>
             <td>{producto.costo}</td>
             <td>{producto.existencia}</td>
-            <td>{lineas[lineas.findIndex(linea => linea.id === producto.linea)].linea}</td>
-            <td>{impuestos[impuestos.findIndex(impuesto => impuesto.id === producto.impuesto)].impuesto}</td>
+            <td>{lineas[lineas.findIndex(linea => linea.id === parseInt(producto.linea))].nombre}</td>
+            <td>{impuestos[impuestos.findIndex(impuesto => impuesto.id === parseInt(producto.impuesto))].nombre}</td>
             <td>{producto.marca}</td>
             {acciones(producto)}
         </tr>

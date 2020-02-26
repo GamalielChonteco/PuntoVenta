@@ -9,7 +9,7 @@ const ModalLinea = () => {
     const { lineaseleccionada, crearLinea, actualizarLinea, limpiarLinea } = lineasContext
 
     const initialState = {
-        linea: '',
+        nombre: '',
         descripcion: ''
     }
 
@@ -23,7 +23,7 @@ const ModalLinea = () => {
 
     const [lineaNueva, guardarLinea] = useState(initialState)
 
-    const { linea, descripcion } = lineaNueva
+    const { nombre, descripcion } = lineaNueva
 
     const handleSubmit = e => {
         e.preventDefault()
@@ -61,7 +61,7 @@ const ModalLinea = () => {
                             <div className='form-group row'>
                                 <div className='col-sm-12 mb-12 mb-sm-0'>
                                     <label htmlFor='nombreLinea'>Linea</label>
-                                    <input onChange={actualizar} value={linea} name='linea' type='text' className='form-control' id='nombreLinea' />
+                                    <input onChange={actualizar} value={nombre} name='nombre' type='text' className='form-control' id='nombreLinea' />
                                 </div>
                             </div>
                             <div className='form-group row'>

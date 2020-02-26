@@ -3,6 +3,8 @@ import axios from 'axios'
 import productoContext from './productoContext'
 import productoReducer from './productoReducer'
 
+import clientAxios from '../../config/axios'
+
 import {
     OBTENER_PRODUCTOS,
     FILTRAR_PRODUCTO,
@@ -26,13 +28,11 @@ const ProductoState = props => {
 
     const obtenerProductos = async () => {
         try {
-            const url = 'http://localhost:5000/producto'
-    
-            const response = await axios.get(url)
+            const response = await clientAxios.get('/producto')
     
             dispatch({
                 type: OBTENER_PRODUCTOS,
-                payload: response.data
+                payload: response.data.productos
             })
         } catch (error) {
             console.log(error)
@@ -41,11 +41,10 @@ const ProductoState = props => {
 
     const crearProducto = async producto => {
         try {
-            const url = 'http://localhost:5000/producto/'
-            const response = await axios.post(url, producto)
+            const response = await clientAxios.post('/producto', producto)
             dispatch({
                 type: AGREGAR_PRODUCTO,
-                payload: JSON.parse(response.config.data)
+                payload: response.data.producto
             })
         } catch (error) {
             console.log(error)
@@ -54,8 +53,7 @@ const ProductoState = props => {
 
     const actualizarProducto = async producto => {
         try {
-            const url = 'http://localhost:5000/producto/'
-            const response = await axios.put(url + producto.id, producto)
+            const response = await clientAxios.put(`/producto/${producto.id}`, producto)
             dispatch({
                 type: ACTUALIZAR_PRODUCTO,
                 payload: JSON.parse(response.config.data)
@@ -68,8 +66,7 @@ const ProductoState = props => {
 
     const actualizarEstado = async producto => {
         try {
-            const url = 'http://localhost:5000/producto/'
-            const response = await axios.put(url + producto.id, {...producto, activo: (producto.activo === 1) ? 0 : 1})
+            const response = await clientAxios.put(`/producto/${producto.id}`, {...producto, activo: (producto.activo === 1) ? 0 : 1})
             dispatch({
                 type: ACTUALIZAR_ESTADO,
                 payload: JSON.parse(response.config.data)
@@ -82,8 +79,7 @@ const ProductoState = props => {
 
     const eliminarProducto = async productoId => {
         try {
-            const url = `http://localhost:5000/producto/${productoId}`
-            await axios.delete(url)
+            await clientAxios.delete(`/producto/${productoId}`)
             dispatch({
                 type: ELIMINAR_PRODUCTO,
                 payload: productoId

@@ -3,6 +3,8 @@ import axios from 'axios'
 import impuestoContext from './impuestoContext'
 import impuestoReducer from './impuestoReducer'
 
+import clientAxios from '../../config/axios'
+
 import {
     OBTENER_IMPUESTOS, 
     AGREGAR_IMPUESTO, 
@@ -22,20 +24,17 @@ const ImpuestoState = props => {
     const [state, dispatch] = useReducer(impuestoReducer, initialState)
 
     const obtenerImpuestos = async () => {
-        const url = 'http://localhost:5000/impuesto'
-
-        const response = await axios.get(url)
+        const response = await clientAxios.get('/impuesto')
 
         dispatch({
             type: OBTENER_IMPUESTOS,
-            payload: response.data
+            payload: response.data.impuestos
         })
     }
 
     const crearImpuesto = async impuesto => {
         try {
-            const url = 'http://localhost:5000/impuesto/'
-            const response = await axios.post(url, impuesto)
+            const response = await clientAxios.post('/impuesto', impuesto)
             dispatch({
                 type: AGREGAR_IMPUESTO,
                 payload: JSON.parse(response.config.data)
@@ -47,8 +46,7 @@ const ImpuestoState = props => {
 
     const actualizarImpuesto = async impuesto => {
         try {
-            const url = 'http://localhost:5000/impuesto/'
-            const response = await axios.put(url + impuesto.id, impuesto)
+            const response = await axios.put(`/impuesto/${impuesto.id}`, impuesto)
             dispatch({
                 type: ACTUALIZAR_IMPUESTO,
                 payload: JSON.parse(response.config.data)
@@ -61,8 +59,7 @@ const ImpuestoState = props => {
 
     const eliminarImpuesto = async impuestoId => {
         try {
-            const url = `http://localhost:5000/impuesto/${impuestoId}`
-            const response = await axios.delete(url)
+            const response = await axios.delete(`/impuesto/${impuestoId}`)
             dispatch({
                 type: ELIMINAR_IMPUESTO,
                 payload: impuestoId

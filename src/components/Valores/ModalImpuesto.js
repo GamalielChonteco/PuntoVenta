@@ -8,7 +8,7 @@ const ModalImpuesto = () => {
 	const { impuestoseleccionado, crearImpuesto, actualizarImpuesto, limpiarImpuesto } = impuestosContext
 
 	const initialState = {
-		impuesto: '',
+		nombre: '',
 		valor: 0.0
 	}
 
@@ -22,7 +22,7 @@ const ModalImpuesto = () => {
 
 	const [impuestoNuevo, guardarImpuesto] = useState(initialState)
 
-	const { impuesto, valor } = impuestoNuevo
+	const { nombre, valor } = impuestoNuevo
 
 	const handleSubmit = e => {
 		e.preventDefault()
@@ -60,7 +60,7 @@ const ModalImpuesto = () => {
 							<div className='form-group row'>
 								<div className='col-sm-12 mb-12 mb-sm-0'>
 									<label htmlFor='nombreImpuesto'>Impuestos</label>
-									<input onChange={actualizar} value={impuesto} name='impuesto' type='text' className='form-control' id='nombreImpuesto' />
+									<input onChange={actualizar} value={nombre} name='nombre' type='text' className='form-control' id='nombreImpuesto' />
 								</div>
 							</div>
 							<div className='form-group row'>
