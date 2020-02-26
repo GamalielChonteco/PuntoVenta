@@ -23,27 +23,9 @@ const Topbar = () => {
 
             <ul className='navbar-nav ml-auto'>
 
-                <li className='nav-item dropdown no-arrow d-sm-none'>
-                    <Link className='nav-link dropdown-toggle' to='#' id='searchDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
-                        <i className='fas fa-search fa-fw'></i>
-                    </Link>
-                    <div className='dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in' aria-labelledby='searchDropdown'>
-                        <form className='form-inline mr-auto w-100 navbar-search'>
-                            <div className='input-group'>
-                                <input type='text' className='form-control bg-light border-0 small' placeholder='Buscar...' aria-label='Search' aria-describedby='basic-addon2' />
-                                <div className='input-group-append'>
-                                    <button className='btn btn-primary' type='button'>
-                                        <i className='fas fa-search fa-sm'></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </li>
-
                 <li className='nav-item dropdown no-arrow'>
                     <Link className='nav-link dropdown-toggle' to='#' id='userDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
-                        {usuario ? <span className='mr-2 d-none d-lg-inline text-gray-600 small'>{usuario.nombre}</span> : null}
+                        {usuario ? <span className='mr-2 d-lg-inline text-gray-600 small'>{usuario.nombre}</span> : null}
                         <img className='img-profile rounded-circle' src='https://p7.hiclipart.com/preview/340/956/944/computer-icons-user-profile-head-ico-download.jpg' alt='' />
                     </Link>
                     <div className='dropdown-menu dropdown-menu-right shadow animated--grow-in' aria-labelledby='userDropdown'>

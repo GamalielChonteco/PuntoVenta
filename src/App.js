@@ -14,12 +14,13 @@ import ImpuestoState from './context/impuestos/impuestoState'
 import AuthState from './context/autenticacion/authState'
 import tokenAuth from './config/tokenAuth'
 import RutaPrivada from './components/rutas/RutaPrivada'
+import UsuarioState from './context/usuarios/usuarioState'
 
 // Revisar si hay token
 const token = localStorage.getItem('token')
 
 if (token) {
-	tokenAuth(token)	
+	tokenAuth(token)
 }
 
 function App() {
@@ -27,16 +28,18 @@ function App() {
 		<ProductoState>
 			<LineaState>
 				<ImpuestoState>
-					<AuthState>
-						<Router>
-							<Switch>
-								<Route exact path='/' component={Login} />
-								<RutaPrivada path='/productos' component={Productos} />
-								<RutaPrivada path='/usuarios' component={Usuarios} />
-								<RutaPrivada path='/valores' component={Valores} />
-							</Switch>
-						</Router>
-					</AuthState>
+					<UsuarioState>
+						<AuthState>
+							<Router>
+								<Switch>
+									<Route exact path='/' component={Login} />
+									<RutaPrivada path='/productos' component={Productos} />
+									<RutaPrivada path='/usuarios' component={Usuarios} />
+									<RutaPrivada path='/valores' component={Valores} />
+								</Switch>
+							</Router>
+						</AuthState>
+					</UsuarioState>
 				</ImpuestoState>
 			</LineaState>
 		</ProductoState>
