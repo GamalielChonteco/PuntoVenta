@@ -167,7 +167,7 @@ const ModalProducto = () => {
                             </div>
                             <div className='modal-footer'>
                                 <button className='btn btn-danger' type='button' data-dismiss='modal' onClick={() => limpiarProducto()}>Cancelar</button>
-                                <button className='btn btn-success' type='button' onClick={handleSubmit} data-dismiss='modal'>Guardar</button>
+                                <button className='btn btn-primary' type='button' onClick={handleSubmit} data-dismiss='modal'>Guardar</button>
                             </div>
                         </form>
                     </div>

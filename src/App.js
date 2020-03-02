@@ -15,6 +15,7 @@ import AuthState from './context/autenticacion/authState'
 import tokenAuth from './config/tokenAuth'
 import RutaPrivada from './components/rutas/RutaPrivada'
 import UsuarioState from './context/usuarios/usuarioState'
+import Perfil from './components/usuarios/Perfil'
 
 // Revisar si hay token
 const token = localStorage.getItem('token')
@@ -36,6 +37,7 @@ function App() {
 									<RutaPrivada path='/productos' component={Productos} />
 									<RutaPrivada path='/usuarios' component={Usuarios} />
 									<RutaPrivada path='/valores' component={Valores} />
+									<RutaPrivada path='/perfil' component={Perfil} />
 								</Switch>
 							</Router>
 						</AuthState>

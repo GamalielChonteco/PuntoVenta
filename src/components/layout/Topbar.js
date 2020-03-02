@@ -12,8 +12,6 @@ const Topbar = () => {
         // eslint-disable-next-line
     }, [])
 
-    // const { nombre } = usuario
-
     return (
         <nav className='navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow'>
 
@@ -29,7 +27,7 @@ const Topbar = () => {
                         <img className='img-profile rounded-circle' src='https://p7.hiclipart.com/preview/340/956/944/computer-icons-user-profile-head-ico-download.jpg' alt='' />
                     </Link>
                     <div className='dropdown-menu dropdown-menu-right shadow animated--grow-in' aria-labelledby='userDropdown'>
-                        <Link className='dropdown-item' to='#'>
+                        <Link className='dropdown-item' to='/perfil'>
                             <i className='fas fa-user fa-sm fa-fw mr-2 text-gray-400'></i>
                             Perfil
                         </Link>
