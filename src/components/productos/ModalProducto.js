@@ -52,7 +52,7 @@ const ModalProducto = () => {
     // Extraer datos del state del formulario
     const { cantidad_1, cantidad_2, cantidad_3, codigo, costo, existencia, impuesto, linea, marca, precio_1, precio_2, precio_3, nombre } = productoNuevo
 
-
+    // Envio del formulario
     const handleSubmit = async (e) => {
         e.preventDefault()
 
@@ -67,6 +67,7 @@ const ModalProducto = () => {
         guardarProducto(initialState)
     }
 
+    // Actualizar datos del state
     const actualizar = e => {
         guardarProducto({
             ...productoNuevo,

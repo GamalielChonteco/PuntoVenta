@@ -4,6 +4,7 @@ import authContext from '../../context/autenticacion/authContext'
 
 const Topbar = () => {
 
+    // Extraemos al usuario autenticado
     const AuthContext = useContext(authContext)
     const { usuario, usuarioAutenticado, cerrarSesion } = AuthContext
 

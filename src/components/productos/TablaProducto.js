@@ -11,11 +11,11 @@ const TablaProducto = () => {
     // Extraer productos del state
     const productosContext = useContext(productoContext)
     const { productos, productoseleccionado, estadoproducto, obtenerProductos, seleccionarProducto, actualizarEstado, eliminarProducto } = productosContext
-    
+
     // Estraer lineas del state
     const lineasContext = useContext(lineaContext)
     const { lineas, obtenerLineas } = lineasContext
-    
+
     // Estraer impuestos del state
     const impuestosContext = useContext(impuestoContext)
     const { impuestos, obtenerImpuestos } = impuestosContext
@@ -104,7 +104,7 @@ const TablaProducto = () => {
                 idModal='modalInactivo'
                 text='Al realizar está acción el producto cambiará de estado a inactivo. ¿Desea continuar?'
                 accion={() => actualizarEstado(productoseleccionado)}
-                />
+            />
             <ModalDialog
                 idModal='modalActivo'
                 text='Al realizar está acción el producto cambiará de estado a activo. ¿Desea continuar?'

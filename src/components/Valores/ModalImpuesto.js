@@ -4,14 +4,17 @@ import impuestoContext from '../../context/impuestos/impuestoContext'
 
 const ModalImpuesto = () => {
 
+	// Extraer impuesto del state
 	const impuestosContext = useContext(impuestoContext)
 	const { impuestoseleccionado, crearImpuesto, actualizarImpuesto, limpiarImpuesto } = impuestosContext
 
+	// State inicial
 	const initialState = {
 		nombre: '',
 		valor: 0.0
 	}
 
+	// Cargar datos del impuesto
 	useEffect(() => {
 		if (impuestoseleccionado !== null) {
 			guardarImpuesto(impuestoseleccionado)
@@ -21,10 +24,13 @@ const ModalImpuesto = () => {
 		// eslint-disable-next-line
 	}, [impuestoseleccionado])
 
+	// State de impuesto
 	const [impuestoNuevo, guardarImpuesto] = useState(initialState)
 
+	// Extraer datos del state
 	const { nombre, valor } = impuestoNuevo
 
+	// Envio de formulario
 	const handleSubmit = e => {
 		e.preventDefault()
 
@@ -39,6 +45,7 @@ const ModalImpuesto = () => {
 		guardarImpuesto(initialState)
 	}
 
+	// Actualizar datos del state
 	const actualizar = e => {
 		guardarImpuesto({
 			...impuestoNuevo,

@@ -46,7 +46,7 @@ const Productos = () => {
                             <div className='card-header py-3'>
                                 <h6 className='m-0 font-weight-bold text-primary'>
                                     Productos&nbsp;
-                                <select onChange={filtrar} value={estadoproducto} className='m-0 font-weight-bold text-primary' name="tipoProducto" id="tipoProducto">
+                                    <select onChange={filtrar} value={estadoproducto} className='m-0 font-weight-bold text-primary' name="tipoProducto" id="tipoProducto">
                                         <option value={1}>Activos</option>
                                         <option value={0}>Inactivos</option>
                                         <option value={2}>Todos</option>

@@ -17,14 +17,17 @@ import {
 
 const ProductoState = props => {
 
+    // State inicial
     const initialState = {
         productos: [],
         productoseleccionado: null,
         estadoproducto: 1
     }
 
+    // Crear state
     const [state, dispatch] = useReducer(productoReducer, initialState)
 
+    // Obtener productos
     const obtenerProductos = async () => {
         try {
             const response = await clientAxios.get('/producto')
@@ -38,6 +41,7 @@ const ProductoState = props => {
         }
     }
 
+    // Crear producto
     const crearProducto = async producto => {
         try {
             const response = await clientAxios.post('/producto', producto)
@@ -50,6 +54,7 @@ const ProductoState = props => {
         }
     }
 
+    // Actualizar productos
     const actualizarProducto = async producto => {
         try {
             const response = await clientAxios.put(`/producto/${producto.id}`, producto)
@@ -64,6 +69,7 @@ const ProductoState = props => {
         }
     }
 
+    // Actualizar estado del producto
     const actualizarEstado = async producto => {
         try {
             const response = await clientAxios.put(`/producto/${producto.id}`, {...producto, activo: (producto.activo === 1) ? 0 : 1})
@@ -77,6 +83,7 @@ const ProductoState = props => {
         }
     }
 
+    // Eliminar producto
     const eliminarProducto = async productoId => {
         try {
             await clientAxios.delete(`/producto/${productoId}`)
@@ -90,6 +97,7 @@ const ProductoState = props => {
         }
     }
 
+    // Filtrar producto por estado
     const filtrarProducto = estado => {
         dispatch({
             type: FILTRAR_PRODUCTO,
@@ -97,6 +105,7 @@ const ProductoState = props => {
         })
     }
 
+    // Seleccionar producto y agregar al state
     const seleccionarProducto = producto => {
         dispatch({
             type: PRODUCTO_SELECCIONADO,
@@ -104,6 +113,7 @@ const ProductoState = props => {
         })
     }
 
+    // Limpiar producto seleccionado
     const limpiarProducto = () => {
         dispatch({
             type: LIMPIAR_PRODUCTO

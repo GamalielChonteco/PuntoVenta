@@ -15,13 +15,16 @@ import {
 
 const UsuarioState = props => {
 
+    // State inicial
     const initialState = {
         usuarios: [],
         usuarioseleccionado: null
     }
 
+    // Crear state
     const [state, dispatch] = useReducer(usuarioReducer, initialState)
 
+    // Obtener usuarios
     const obtenerUsuarios = async () => {
         try {
             const response = await clientAxios.get('/usuario')
@@ -34,6 +37,7 @@ const UsuarioState = props => {
         }
     }
 
+    // Crear usuario
     const crearUsuario = async usuario => {
         try {
             const response = await clientAxios.post('/usuario', usuario)
@@ -46,6 +50,7 @@ const UsuarioState = props => {
         }
     }
 
+    // Actualizar usuario
     const actualizarUsuario = async usuario => {
         try {
             const response = await clientAxios.put(`/usuario/${usuario.id}`, usuario)
@@ -55,10 +60,19 @@ const UsuarioState = props => {
             })
         } catch (error) {
             console.log(error)
-            
         }
     }
 
+    // Actualizar password
+    const actualizarPassword = async usuario => {
+        try {
+            await clientAxios.put(`/usuario/password/${usuario.id}`, usuario)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    // Eliminar usuario
     const eliminarUsuario = async usuarioId => {
         try {
             await clientAxios.delete(`/usuario/${usuarioId}`)
@@ -72,6 +86,7 @@ const UsuarioState = props => {
         }
     }
 
+    // Seleccionar usuario y agregarlo al state
     const seleccionarUsuario = usuario => {
         dispatch({
             type: USUARIO_SELECCIONADO,
@@ -79,6 +94,7 @@ const UsuarioState = props => {
         })
     }
 
+    // Limpiar usuario seleccionado
     const limpiarUsuario = () => {
         dispatch({
             type: LIMPIAR_USUARIO
@@ -93,6 +109,7 @@ const UsuarioState = props => {
                 obtenerUsuarios,
                 crearUsuario,
                 actualizarUsuario,
+                actualizarPassword,
                 seleccionarUsuario,
                 limpiarUsuario,
                 eliminarUsuario

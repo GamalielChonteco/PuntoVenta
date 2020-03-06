@@ -13,9 +13,11 @@ import ModalLinea from './ModalLinea'
 
 const Valores = () => {
 
+    // Obtener funcion del state
     const lineasContext = useContext(lineaContext)
     const { limpiarLinea } = lineasContext
 
+    // Obtener funcion del state
     const impuestosContext = useContext(impuestoContext)
     const { limpiarImpuesto } = impuestosContext
 

@@ -8,8 +8,11 @@ const ModalUsuarios = () => {
 
 	const initialState = {
 		nombre: '',
+		ap_paterno: '',
+		ap_materno: '',
 		tipo_usuario: 1,
-		username: ''
+		username: '',
+		password: '12345678'
 	}
 
 	useEffect(() => {
@@ -23,7 +26,7 @@ const ModalUsuarios = () => {
 
 	const [usuarioNuevo, guardarUsuario] = useState(initialState)
 
-	const { nombre, tipo_usuario } = usuarioNuevo
+	const { nombre, ap_paterno, ap_materno, tipo_usuario, username } = usuarioNuevo
 
 	const handleSubmit = async (e) => {
 		e.preventDefault()
@@ -46,6 +49,10 @@ const ModalUsuarios = () => {
 		})
 	}
 	
+	const abr = e => {
+		console.log(e.target.value)
+	}
+
 	return (
 		<div className='modal fade' id='usuarioModal' tabIndex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
 			<div className='modal-dialog' role='document'>
@@ -60,20 +67,30 @@ const ModalUsuarios = () => {
 						<form id='form-usuarios' className='user'>
 							<div className='form-group row'>
 								<div className='col-sm-12 mb-12 mb-sm-0'>
-									<label htmlFor='nombreUsuario'>Nombre completo</label>
+									<label htmlFor='nombreUsuario'>Nombre</label>
 									<input value={nombre} onChange={actualizar} name='nombre' required type='text' className='form-control' id='nombreUsuario' />
+								</div>
+							</div>
+							<div className='form-group row'>
+								<div className='col-sm-6'>
+									<label htmlFor='paternoUsuario'>Apellido paterno</label>
+									<input value={ap_paterno} onChange={actualizar} name='ap_paterno' required type='text' className='form-control' id='paternoUsuario' />
+								</div>
+								<div className='col-sm-6'>
+									<label htmlFor='maternoUsuario'>Apellido materno</label>
+									<input value={ap_materno} onChange={actualizar} name='ap_materno' required type='text' className='form-control' id='maternoUsuario' />
 								</div>
 							</div>
 							<div className='form-group row'>
 								<div className='col-sm-12 mb-12 mb-sm-0'>
 									<label htmlFor='nombreUsuario'>Nombre de usuario</label>
-									<input type='text' className='form-control' />
+									<input value={username} onChange={actualizar} name='username' type='text' className='form-control' />
 								</div>
 							</div>
 							<div className='form-group row'>
 								<div className='col-sm-12'>
 									<label htmlFor='tipoUsuario'>Tipo usuario</label>
-									<select value={tipo_usuario} onChange={actualizar} required name='tipoUsuario' id='tipoUsuario' className='form-control'>
+									<select value={tipo_usuario} onChange={actualizar} name='tipo_usuario' id='tipoUsuario' className='form-control'>
 										<option value='0'>Seleccione el tipo de usuario</option>
 										<option value='1'>Supervisor</option>
 										<option value='2'>Cajero</option>
@@ -87,14 +104,14 @@ const ModalUsuarios = () => {
 							<div className='form-group row'>
 								<div className='col-sm-6 mb-3 mb-sm-0'>
 									<div className='custom-control custom-checkbox'>
-										<input className='custom-control-input' type='checkbox' name='insert_producto' id='insert_producto' />
+										<input onChange={abr} value='1' className='custom-control-input' type='checkbox' name='insert_producto' id='insert_producto' />
 										<label className='custom-control-label' htmlFor='insert_producto'>Agregar productos</label>
 									</div>
 								</div>
 								<div className='col-sm-6 mb-3 mb-sm-0'>
 									<div className='custom-control custom-checkbox'>
 										<input className='custom-control-input' type='checkbox' name='update_producto' id='update_producto' />
-										<label className='custom-control-label' htmlFor='update_producto'>Actualizar productos</label>
+										<label className='custom-control-label' htmlFor='update_producto'>Actualizar precios</label>
 									</div>
 								</div>
 							</div>

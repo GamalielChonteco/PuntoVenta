@@ -8,11 +8,13 @@ const ModalLinea = () => {
     const lineasContext = useContext(lineaContext)
     const { lineaseleccionada, crearLinea, actualizarLinea, limpiarLinea } = lineasContext
 
+    // State inicial
     const initialState = {
         nombre: '',
         descripcion: ''
     }
 
+    // Cargar datos de linea
     useEffect(() => {
         if (lineaseleccionada !== null) {
             guardarLinea(lineaseleccionada)
@@ -22,10 +24,13 @@ const ModalLinea = () => {
         // eslint-disable-next-line
     }, [lineaseleccionada])
 
+    // Crear state
     const [lineaNueva, guardarLinea] = useState(initialState)
 
+    // Extraer datos del state
     const { nombre, descripcion } = lineaNueva
 
+    // Envio de formulario
     const handleSubmit = e => {
         e.preventDefault()
 
@@ -40,6 +45,7 @@ const ModalLinea = () => {
         guardarLinea(initialState)
     }
 
+    // Actualizar datos del state
     const actualizar = e => {
         guardarLinea({
             ...lineaNueva,

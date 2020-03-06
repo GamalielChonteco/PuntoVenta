@@ -15,13 +15,16 @@ import {
 
 const ImpuestoState = props => {
 
+    // State inicial
     const initialState = {
         impuestos: [],
         impuestoseleccionado: null
     }
 
+    // Crear state
     const [state, dispatch] = useReducer(impuestoReducer, initialState)
 
+    // Obtener impuestos
     const obtenerImpuestos = async () => {
         const response = await clientAxios.get('/impuesto')
 
@@ -31,6 +34,7 @@ const ImpuestoState = props => {
         })
     }
 
+    // Crear impuesto
     const crearImpuesto = async impuesto => {
         try {
             const response = await clientAxios.post('/impuesto', impuesto)
@@ -43,6 +47,7 @@ const ImpuestoState = props => {
         }
     }
 
+    // Actualizar impuesto
     const actualizarImpuesto = async impuesto => {
         try {
             const response = await clientAxios.put(`/impuesto/${impuesto.id}`, impuesto)
@@ -56,6 +61,7 @@ const ImpuestoState = props => {
         }
     }
 
+    // Eliminar impuesto
     const eliminarImpuesto = async impuestoId => {
         try {
             await clientAxios.delete(`/impuesto/${impuestoId}`)
@@ -69,6 +75,7 @@ const ImpuestoState = props => {
         }
     }
 
+    // Agregar impuesto seleccionado al state
     const seleccionarImpuesto = impuesto => {
         dispatch({
             type: IMPUESTO_SELECCIONADO,
@@ -76,6 +83,7 @@ const ImpuestoState = props => {
         })
     }
 
+    // Limpiar impuesto seleccionado
     const limpiarImpuesto = () => {
         dispatch({
             type: LIMPIAR_IMPUESTO

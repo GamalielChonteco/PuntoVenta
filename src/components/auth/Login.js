@@ -3,22 +3,27 @@ import authContext from '../../context/autenticacion/authContext'
 
 const Login = props => {
 
+    // Extraemos al usuario autenticado de Auth
     const AuthContext = useContext(authContext)
     const { mensaje, autenticado, iniciarSesion } = AuthContext
 
+    // Validamos si el usuario se encuentra autenticado y pasarlo a la pantalla de inicio
     useEffect(() => {
         if (autenticado) {
             props.history.push('/productos')
         } 
     }, [mensaje, autenticado, props.history])
 
+    // Inicializamos el state
     const [usuario, setUsuario] = useState({
         username: '',
         password: ''
     })
 
+    // Extraemos datos del state
     const { username, password } = usuario
-
+    
+    // Cambiar valores del state
     const actualizar = e => {
         setUsuario({
             ...usuario,
@@ -26,11 +31,16 @@ const Login = props => {
         })
     }
 
-    const onSubmit = e => {
+    // Envio de formulario
+    const onSubmit = async e => {
         e.preventDefault()
 
         // onSubmit
-        iniciarSesion({ username, password })
+        await iniciarSesion({ username, password })
+        setUsuario({
+            ...usuario,
+            password: ''
+        })
     }
 
     return (
@@ -50,7 +60,7 @@ const Login = props => {
                                                 <input onChange={actualizar} value={username} type='text' name='username' className='form-control form-control-user' id='exampleInputEmail' aria-describedby='emailHelp' placeholder='Usuario' />
                                             </div>
                                             <div className='form-group'>
-                                                <input onChange={actualizar} value={password} type='password' name='password' className='form-control form-control-user' id='exampleInputPassword' placeholder='Constraseña' />
+                                                <input onChange={actualizar} value={password} type='password' name='password' className='form-control form-control-user' id='exampleInputPassword' placeholder='Contraseña' />
                                             </div>
                                             <button type='submit' className='btn btn-primary btn-user btn-block'>
                                                 Login

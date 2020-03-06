@@ -15,13 +15,16 @@ import {
 
 const LineaState = props => {
 
+    // State inicial
     const initialState = {
         lineas: [],
         lineaseleccionada: null
     }
 
+    // Crear state
     const [state, dispatch] = useReducer(lineaReducer, initialState)
 
+    // Obtener lineas
     const obtenerLineas = async () => {
         const response = await clientAxios.get('/linea')
 
@@ -31,6 +34,7 @@ const LineaState = props => {
         })
     }
 
+    // Crear linea
     const crearLinea = async linea => {
         try {
             const response = await clientAxios.post('/linea', linea)
@@ -43,6 +47,7 @@ const LineaState = props => {
         }
     }
 
+    // Actualizar linea
     const actualizarLinea = async linea => {
         try {
             const response = await clientAxios.put(`/linea/${linea.id}`, linea)
@@ -56,6 +61,7 @@ const LineaState = props => {
         }
     }
 
+    // Eliminar linea
     const eliminarLinea = async lineaId => {
         try {
             await clientAxios.delete(`/linea/${lineaId}`)
@@ -69,6 +75,7 @@ const LineaState = props => {
         }
     }
 
+    // Seleccionar linea y agregarla al state
     const seleccionarLinea = linea => {
         dispatch({
             type: LINEA_SELECCIONADA,
@@ -76,6 +83,7 @@ const LineaState = props => {
         })
     }
 
+    // Limpiar linea seleccionada
     const limpiarLinea = () => {
         dispatch({
             type: LIMPIAR_LINEA

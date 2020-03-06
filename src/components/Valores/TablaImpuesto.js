@@ -6,9 +6,11 @@ import ModalDialog from '../ModalDialog'
 
 const TablaImpuesto = () => {
 
+	// Extraer impuestos del state
 	const impuestosContext = useContext(impuestoContext)
 	const { impuestos, impuestoseleccionado, obtenerImpuestos, seleccionarImpuesto, eliminarImpuesto } = impuestosContext
 
+	// Cargar impuestos
 	useEffect(() => {
 		obtenerImpuestos()
 		// eslint-disable-next-line

@@ -1,4 +1,6 @@
 import React, { useReducer } from 'react'
+import Swal from 'sweetalert2'
+
 import authContext from '../../context/autenticacion/authContext'
 import authReducer from '../../context/autenticacion/authReducer'
 
@@ -14,6 +16,7 @@ import {
 
 const AuthState = props => {
 
+    // State inicial
     const initialState = {
         token: localStorage.getItem('token'),
         autenticado: null,
@@ -22,8 +25,10 @@ const AuthState = props => {
         cargando: true
     }
 
+    // Crear state
     const [state, dispatch] = useReducer(authReducer, initialState)
 
+    // Validar que el usuario este autenticado
     const usuarioAutenticado = async () => {
         const token = localStorage.getItem('token')
 
@@ -44,6 +49,7 @@ const AuthState = props => {
         }
     }
 
+    // Funcion para iniciar sesion
     const iniciarSesion = async datos => {
         try {
             const response = await clientAxios.post('/auth', datos)
@@ -57,9 +63,17 @@ const AuthState = props => {
                 type: LOGIN_ERROR,
                 payload: error
             })
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'El usuario o la contraseña son incorrectos',
+                showConfirmButton: false,
+                timer: 1500
+            })
         }
     }
 
+    // Funcion para cerrar sesion
     const cerrarSesion = () => {
         dispatch({
             type: CERRAR_SESION
