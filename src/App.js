@@ -18,6 +18,7 @@ import RutaPrivada from './components/rutas/RutaPrivada'
 import UsuarioState from './context/usuarios/usuarioState'
 import Perfil from './components/usuarios/Perfil'
 import ClienteState from './context/clientes/clienteState'
+import Ventas from './components/ventas/Ventas'
 
 // Revisar si hay token
 const token = localStorage.getItem('token')
@@ -37,6 +38,7 @@ function App() {
 								<Router>
 									<Switch>
 										<Route exact path='/' component={Login} />
+										<RutaPrivada path='/ventas' component={Ventas} />
 										<RutaPrivada path='/productos' component={Productos} />
 										<RutaPrivada path='/usuarios' component={Usuarios} />
 										<RutaPrivada path='/valores' component={Valores} />

@@ -51,7 +51,7 @@ const TablaImpuesto = () => {
 			</table>
 			<ModalDialog
                 idModal='modalEliminarImpuesto'
-                text='Al realizar está acción el impuesto se eliminara permanentemente. ¿Desea continuar?'
+                text='Al realizar está acción el impuesto se eliminará permanentemente. ¿Desea continuar?'
                 accion={() => eliminarImpuesto(impuestoseleccionado.id)}
             />
 		</Fragment>

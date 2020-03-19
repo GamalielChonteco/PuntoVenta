@@ -112,7 +112,7 @@ const TablaProducto = () => {
             />
             <ModalDialog
                 idModal='modalEliminar'
-                text='Al realizar está acción el producto se eliminara permanentemente. ¿Desea continuar?'
+                text='Al realizar está acción el producto se eliminará permanentemente. ¿Desea continuar?'
                 accion={() => eliminarProducto(productoseleccionado.id)}
             />
         </Fragment>

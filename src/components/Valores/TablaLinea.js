@@ -51,7 +51,7 @@ const TablaLinea = () => {
 			</table>
 			<ModalDialog
                 idModal='modalEliminarLinea'
-                text='Al realizar está acción la linea se eliminara permanentemente. ¿Desea continuar?'
+                text='Al realizar está acción la linea se eliminará permanentemente. ¿Desea continuar?'
                 accion={() => eliminarLinea(lineaseleccionada.id)}
             />
 		</Fragment>

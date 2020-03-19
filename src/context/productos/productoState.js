@@ -1,8 +1,10 @@
 import React, { useReducer } from 'react'
+
 import productoContext from './productoContext'
 import productoReducer from './productoReducer'
 
 import clientAxios from '../../config/axios'
+import { alerta, alertaError } from '../../components/alertas'
 
 import {
     OBTENER_PRODUCTOS,
@@ -31,7 +33,6 @@ const ProductoState = props => {
     const obtenerProductos = async () => {
         try {
             const response = await clientAxios.get('/producto')
-    
             dispatch({
                 type: OBTENER_PRODUCTOS,
                 payload: response.data.productos
@@ -49,8 +50,9 @@ const ProductoState = props => {
                 type: AGREGAR_PRODUCTO,
                 payload: response.data.producto
             })
+            alerta('Creado correctamente')
         } catch (error) {
-            console.log(error)
+            alertaError()
         }
     }
 
@@ -58,28 +60,28 @@ const ProductoState = props => {
     const actualizarProducto = async producto => {
         try {
             const response = await clientAxios.put(`/producto/${producto.id}`, producto)
-            console.log(response)
             dispatch({
                 type: ACTUALIZAR_PRODUCTO,
                 payload: JSON.parse(response.config.data)
             })
+            alerta('Modificado correctamente')
         } catch (error) {
-            console.log(error)
-            
+            alertaError()
         }
     }
 
     // Actualizar estado del producto
     const actualizarEstado = async producto => {
         try {
-            const response = await clientAxios.put(`/producto/${producto.id}`, {...producto, activo: (producto.activo === 1) ? 0 : 1})
+            const response = await clientAxios.put(`/producto/${producto.id}`, { ...producto, activo: (producto.activo === 1) ? 0 : 1 })
             dispatch({
                 type: ACTUALIZAR_ESTADO,
                 payload: JSON.parse(response.config.data)
             })
+            alerta('Modificado correctamente')
             limpiarProducto()
         } catch (error) {
-            console.log(error)
+            alertaError()
         }
     }
 
@@ -91,9 +93,10 @@ const ProductoState = props => {
                 type: ELIMINAR_PRODUCTO,
                 payload: productoId
             })
+            alerta('Eliminado correctamente')
             limpiarProducto()
         } catch (error) {
-            console.log(error)
+            alertaError()
         }
     }
 

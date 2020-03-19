@@ -1,6 +1,7 @@
 import React, { useReducer } from 'react'
 import clienteContext from './clienteContext'
 import clienteReducer from './clienteReducer'
+import { alerta, alertaError } from '../../components/alertas'
 
 import clientAxios from '../../config/axios'
 
@@ -41,8 +42,9 @@ const ClienteState = props => {
                 type: AGREGAR_CLIENTE,
                 payload: response.data.cliente
             })
+            alerta('Creado correctamente')
         } catch (error) {
-            console.log(error)
+            alertaError()
         }
     }
 
@@ -53,9 +55,9 @@ const ClienteState = props => {
                 type: ACTUALIZAR_CLIENTE,
                 payload: JSON.parse(response.config.data)
             })
+            alerta('Modificado correctamente')
         } catch (error) {
-            console.log(error)
-            
+            alertaError()
         }
     }
 
@@ -67,8 +69,9 @@ const ClienteState = props => {
                 payload: clienteId
             })
             limpiarCliente()
+            alerta('Eliminado correctamente')
         } catch (error) {
-            console.log(error)
+            alertaError()
         }
     }
 

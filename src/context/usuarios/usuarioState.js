@@ -1,6 +1,7 @@
 import React, { useReducer } from 'react'
 import usuarioContext from './usuarioContext'
 import usuarioReducer from './usuarioReducer'
+import { alerta, alertaError } from '../../components/alertas'
 
 import clientAxios from '../../config/axios'
 
@@ -45,8 +46,9 @@ const UsuarioState = props => {
                 type: AGREGAR_USUARIO,
                 payload: response.data.usuario
             })
+            alerta('Creado correctamente')
         } catch (error) {
-            console.log(error)
+            alertaError()
         }
     }
 
@@ -58,8 +60,9 @@ const UsuarioState = props => {
                 type: ACTUALIZAR_USUARIO,
                 payload: JSON.parse(response.config.data)
             })
+            alerta('Modificado correctamente')
         } catch (error) {
-            console.log(error)
+            alertaError()
         }
     }
 
@@ -67,8 +70,9 @@ const UsuarioState = props => {
     const actualizarPassword = async usuario => {
         try {
             await clientAxios.put(`/usuario/password/${usuario.id}`, usuario)
+            alerta('Modificado correctamente')
         } catch (error) {
-            console.log(error)
+            alertaError()
         }
     }
 
@@ -81,8 +85,9 @@ const UsuarioState = props => {
                 payload: usuarioId
             })
             limpiarUsuario()
+            alerta('Eliminado correctamente')
         } catch (error) {
-            console.log(error)
+            alertaError()
         }
     }
 

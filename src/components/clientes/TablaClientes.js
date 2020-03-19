@@ -51,7 +51,7 @@ const TablaClientes = () => {
 			</table>
             <ModalDialog
                 idModal='modalEliminarCliente'
-                text='Al realizar está acción el usuario se eliminara permanentemente. ¿Desea continuar?'
+                text='Al realizar está acción el usuario se eliminará permanentemente. ¿Desea continuar?'
                 accion={() => eliminarCliente(clienteseleccionado.id)}
             />
 		</Fragment>

@@ -24,8 +24,8 @@ const Valores = () => {
     return (
         <Fragment>
             <Sidebar />
-            <div id="content-wrapper" className="d-flex flex-column">
-                <div id="content">
+            <div id='content-wrapper' className='d-flex flex-column'>
+                <div id='content'>
                     <Topbar />
                     <div className='container-fluid'>
                         <div className='row'>

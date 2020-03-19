@@ -31,6 +31,13 @@ const Sidebar = () => {
 			<div className='sidebar-heading'>Sistema</div>
 
 			<li className='nav-item'>
+				<Link className='nav-link' to='/ventas'>
+					<i className='fas fa-fw fa-concierge-bell'></i>
+					<span>Ventas</span>
+				</Link>
+			</li>
+
+			<li className='nav-item'>
 				<Link className='nav-link' to='/productos'>
 					<i className='fas fa-fw fa-box'></i>
 					<span>Productos</span>
@@ -46,7 +53,7 @@ const Sidebar = () => {
 
 			<li className='nav-item'>
 				<Link className='nav-link' to='/clientes'>
-					<i className='fas fa-fw fa-user'></i>
+					<i className='fas fa-fw fa-address-card'></i>
 					<span>Clientes</span>
 				</Link>
 			</li>

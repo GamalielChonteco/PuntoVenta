@@ -1,6 +1,7 @@
 import React, { useReducer } from 'react'
 import lineaContext from './lineaContext'
 import lineaReducer from './lineaReducer'
+import { alerta, alertaError } from '../../components/alertas'
 
 import clientAxios from '../../config/axios'
 
@@ -26,12 +27,15 @@ const LineaState = props => {
 
     // Obtener lineas
     const obtenerLineas = async () => {
-        const response = await clientAxios.get('/linea')
-
-        dispatch({
-            type: OBTENER_LINEAS,
-            payload: response.data.lineas
-        })
+        try {
+            const response = await clientAxios.get('/linea')
+            dispatch({
+                type: OBTENER_LINEAS,
+                payload: response.data.lineas
+            })
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     // Crear linea
@@ -42,8 +46,9 @@ const LineaState = props => {
                 type: AGREGAR_LINEA,
                 payload: response.data.linea
             })
+            alerta('Creado correctamente')
         } catch (error) {
-            console.log(error)
+            alertaError()
         }
     }
 
@@ -55,9 +60,9 @@ const LineaState = props => {
                 type: ACTUALIZAR_LINEA,
                 payload: JSON.parse(response.config.data)
             })
+            alerta('Modificado correctamente')
         } catch (error) {
-            console.log(error)
-            
+            alertaError()
         }
     }
 
@@ -70,8 +75,9 @@ const LineaState = props => {
                 payload: lineaId
             })
             limpiarLinea()
+            alerta('Eliminado correctamente')
         } catch (error) {
-            console.log(error)
+            alertaError()
         }
     }
 

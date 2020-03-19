@@ -1,6 +1,7 @@
 import React, { useReducer } from 'react'
 import impuestoContext from './impuestoContext'
 import impuestoReducer from './impuestoReducer'
+import { alerta, alertaError } from '../../components/alertas'
 
 import clientAxios from '../../config/axios'
 
@@ -26,12 +27,15 @@ const ImpuestoState = props => {
 
     // Obtener impuestos
     const obtenerImpuestos = async () => {
-        const response = await clientAxios.get('/impuesto')
-
-        dispatch({
-            type: OBTENER_IMPUESTOS,
-            payload: response.data.impuestos
-        })
+        try {
+            const response = await clientAxios.get('/impuesto')
+            dispatch({
+                type: OBTENER_IMPUESTOS,
+                payload: response.data.impuestos
+            })
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     // Crear impuesto
@@ -40,10 +44,11 @@ const ImpuestoState = props => {
             const response = await clientAxios.post('/impuesto', impuesto)
             dispatch({
                 type: AGREGAR_IMPUESTO,
-                payload: JSON.parse(response.config.data)
+                payload: response.data.impuesto
             })
+            alerta('Creado correctamente')
         } catch (error) {
-            console.log(error)
+            alertaError()
         }
     }
 
@@ -55,9 +60,9 @@ const ImpuestoState = props => {
                 type: ACTUALIZAR_IMPUESTO,
                 payload: JSON.parse(response.config.data)
             })
+            alerta('Modificado correctamente')
         } catch (error) {
-            console.log(error)
-            
+            alertaError()
         }
     }
 
@@ -70,8 +75,9 @@ const ImpuestoState = props => {
                 payload: impuestoId
             })
             limpiarImpuesto()
+            alerta('Eliminado correctamente')
         } catch (error) {
-            console.log(error)
+            alertaError()
         }
     }
 

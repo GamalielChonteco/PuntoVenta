@@ -22,6 +22,7 @@ const TablaUsuarios = () => {
 				<thead>
 					<tr>
 						<th>Nombre</th>
+						<th>Apellido paterno</th>
 						<th>User Name</th>
 						<th>Tipo Usuario</th>
 						<th></th>
@@ -31,6 +32,7 @@ const TablaUsuarios = () => {
 					{usuarios.map(usuario => (
 						<tr key={usuario.id}>
 							<td>{usuario.nombre}</td>
+							<td>{usuario.ap_paterno}</td>
 							<td>{usuario.username}</td>
 							<td>{usuario.tipo_usuario}</td>
 							<td>
@@ -51,7 +53,7 @@ const TablaUsuarios = () => {
 			</table>
             <ModalDialog
                 idModal='modalEliminarProducto'
-                text='Al realizar está acción el usuario se eliminara permanentemente. ¿Desea continuar?'
+                text='Al realizar está acción el usuario se eliminará permanentemente. ¿Desea continuar?'
                 accion={() => eliminarUsuario(usuarioseleccionado.id)}
             />
 		</Fragment>

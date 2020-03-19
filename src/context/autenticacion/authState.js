@@ -1,8 +1,8 @@
 import React, { useReducer } from 'react'
-import Swal from 'sweetalert2'
 
 import authContext from '../../context/autenticacion/authContext'
 import authReducer from '../../context/autenticacion/authReducer'
+import { alertaSesion } from '../../components/alertas'
 
 import clientAxios from '../../config/axios'
 import tokenAuth from '../../config/tokenAuth'
@@ -63,13 +63,7 @@ const AuthState = props => {
                 type: LOGIN_ERROR,
                 payload: error
             })
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'El usuario o la contraseña son incorrectos',
-                showConfirmButton: false,
-                timer: 1500
-            })
+            alertaSesion()
         }
     }
 
@@ -97,5 +91,5 @@ const AuthState = props => {
         </authContext.Provider>
     )
 }
- 
+
 export default AuthState

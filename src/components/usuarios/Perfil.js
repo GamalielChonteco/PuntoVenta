@@ -36,7 +36,7 @@ const Perfil = () => {
 
     const [user, guardarUsuario] = useState(initialState)
 
-    const { nombre, ap_paterno, ap_materno, username, tipo_usuario } = user
+    const { nombre, ap_paterno, ap_materno, username } = user
 
     const handleSubmit = async (e) => {
         e.preventDefault()

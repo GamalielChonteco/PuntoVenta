@@ -10,7 +10,7 @@ const Login = props => {
     // Validamos si el usuario se encuentra autenticado y pasarlo a la pantalla de inicio
     useEffect(() => {
         if (autenticado) {
-            props.history.push('/productos')
+            props.history.push('/ventas')
         } 
     }, [mensaje, autenticado, props.history])
 
@@ -46,7 +46,7 @@ const Login = props => {
     return (
         <div className='container'>
             <div className='row justify-content-center'>
-                <div className='col-xl-5 col-lg-5 col-md-9'>
+                <div className='col-xl-5 col-lg-5 col-md-8'>
                     <div className='card o-hidden border-0 shadow-lg my-5'>
                         <div className='card-body p-0'>
                             <div className='row'>
